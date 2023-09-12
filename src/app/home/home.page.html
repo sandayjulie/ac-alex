@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      AC - Consultar o CEP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-input label="Digite o CEP:" labelPlacement="floating" [(ngModel)]="cep" type="text" color="success" placeholder="CEP ..."></ion-input>
+  </ion-item>
+  <ion-button expand="full" shape="round" fill="outline" color="success" (click)="consultarCEP()">Consultar Endereço</ion-button>
+
+
+
+  <ion-card *ngIf="endereco">
+    <ion-card-content>
+      <p>CEP: {{ endereco.cep }}</p>
+      <p>Logradouro: {{ endereco.logradouro }}</p>
+      <p>Bairro: {{ endereco.bairro }}</p>
+      <p>Cidade: {{ endereco.localidade }}</p>
+      <p>Estado: {{ endereco.uf }}</p>
+    </ion-card-content>
+  </ion-card>
+<br/>
+
+  <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Consultar o CEP - Sigla, Cidade e Rua
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-item>
+    <ion-input label="Digite a sigla do estado:" labelPlacement="floating" [(ngModel)]="uf" type="text" placeholder="Sigla ..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Digite a cidade:" labelPlacement="floating" [(ngModel)]="localidade" type="text" placeholder="Cidade ..."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input color="dark" label="Digite o nome da rua:" labelPlacement="floating" [(ngModel)]="logradouro" type="text" placeholder="Rua ..."></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" shape="round" fill="outline" color="success" (click)="consultar2()">Consultar Endereço</ion-button>
+
+  <ion-card *ngIf="endereco2">
+    <ion-card-header>
+      Resultado Endereço
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let enderecoFinal of endereco2">
+      <p>Estado: {{ enderecoFinal.uf }}</p>
+      <p>Cidade: {{ enderecoFinal.localidade }}</p>
+      <p>Logradouro: {{ enderecoFinal.logradouro }}</p>
+      <p>Bairro: {{ enderecoFinal.bairro }}</p>
+      <p>CEP: {{ enderecoFinal.cep }}</p>
+      <p>-----------------------------------------------------------</p>
+    </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
